@@ -1,18 +1,13 @@
 import React from 'react';
 import './Comment.scss';
+import uuid from 'uuid';
 
 class Comment extends React.Component {
     render() {
         return (
         <div className="commentContainer">
-            {this.props.commentData.comments.map((element, index) => {
-                return (
-                    <div className="comment">
-                        <span className="username">{element.username}</span>
-                        <p className="commentText">{element.text}</p>
-                    </div>
-                )
-            })}
+            <span className="username">{this.props.commentData.username}</span>
+            <p className="commentText">{this.props.commentData.text}</p>
         </div>
         )
     }
