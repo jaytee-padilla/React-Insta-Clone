@@ -1,6 +1,5 @@
 import React from 'react';
 import './Comment.scss';
-import uuid from 'uuid';
 
 class Comment extends React.Component {
     render() {
