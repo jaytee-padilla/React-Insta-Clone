@@ -9,16 +9,33 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: dummyData
+      data: [],
+      search: '',
+      filteredPosts: []
     }
+  }
+
+  componentDidMount() {
+    this.setState({data: dummyData});
+  }
+
+  changeHandler = event => {
+    this.setState({
+        [event.target.name]: event.target.value
+    })
+  }
+
+  searchFilter = event => {
+    const filtered = this.state.data.filter(post => post.username.toLowerCase().includes(event.target.value.toLowerCase()));
+
+    this.setState({filteredPosts: filtered});
   }
 
   render() {
     return (
       <div className="App">
-        <h1>React Instagram Clone</h1>
-        <SearchBar />
-        <PostContainer dummyData={this.state.data} />
+        <SearchBar newSearch={this.state.search} searchFilter={this.searchFilter}/>
+        <PostContainer data={this.state.data} filteredPosts={this.state.filteredPosts} searchFilter={this.searchFilter} />
       </div>
     )
   }

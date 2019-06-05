@@ -10,7 +10,12 @@ class SearchBar extends React.Component {
                 </div>
 
                 <div className="searchBar">
-                    <input type="text" placeholder="Search"></input>
+                    <input
+                        type="text"
+                        name="search"
+                        onChange={this.props.searchFilter}
+                        placeholder="Search">
+                    </input>
                 </div>
 
                 <div className="navLinkIcons">
