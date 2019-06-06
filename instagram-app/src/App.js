@@ -35,7 +35,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <SearchBar newSearch={this.state.search} searchFilter={this.searchFilter}/>
-        <PostContainer data={this.state.data} filteredPosts={this.state.filteredPosts} searchFilter={this.searchFilter} />
+        <PostContainer data={this.state.data} filteredPosts={this.state.filteredPosts} searchFilter={this.searchFilter} likeBtnHandler={this.likeBtnHandler} liked={this.state.liked} />
       </div>
     )
   }

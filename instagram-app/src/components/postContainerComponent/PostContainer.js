@@ -1,7 +1,7 @@
 import React from 'react';
 import './PostContainer.scss';
-import PostHeader from './PostHeader';
 import CommentSection from '../commentComponent/CommentSection';
+import Card from './Card';
 
 class PostContainer extends React.Component {
     render() {
@@ -10,37 +10,11 @@ class PostContainer extends React.Component {
 
                     {this.props.filteredPosts.length === 0 ? this.props.data.map(post => {
                         return (
-                            <React.Fragment>
-                                <header>
-                                    <img src={post.thumbnailUrl} alt="User thumbnail" />
-                                    <h3>{post.username}</h3>
-                                </header>
-
-                                <img src={post.imageUrl} alt="main image" />
-
-                                <section className="likeBar">
-                                    {post.likes} likes
-                                </section>
-
-                                <CommentSection comments={post.comments} timestamp={post.timestamp} />
-                            </React.Fragment>
+                            <Card post={post} />
                         )
                     }) : this.props.filteredPosts.map(post => {
                         return (
-                            <React.Fragment>
-                                <header>
-                                    <img src={post.thumbnailUrl} alt="User thumbnail" />
-                                    <h3>{post.username}</h3>
-                                </header>
-
-                                <img src={post.imageUrl} alt="main image" />
-
-                                <section className="likeBar">
-                                    {post.likes} likes
-                                </section>
-
-                                <CommentSection comments={post.comments} timestamp={post.timestamp} />
-                            </React.Fragment>
+                            <Card post={post} />
                         )
                     })
                 }
@@ -48,6 +22,8 @@ class PostContainer extends React.Component {
                 </div>
         )
     }
+
+
 }
 
 export default PostContainer;
