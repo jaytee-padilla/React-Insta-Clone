@@ -1,12 +1,13 @@
 import React from 'react';
-import './PostContainer.scss';
-import CommentSection from '../commentComponent/CommentSection';
+import styled from 'styled-components';
 import Card from './Card';
+
+const PostContainerWrapper = styled.div``;
 
 class PostContainer extends React.Component {
     render() {
         return (
-                <div className="post-container">
+                <PostContainerWrapper>
 
                     {this.props.filteredPosts.length === 0 ? this.props.data.map(post => {
                         return (
@@ -19,7 +20,7 @@ class PostContainer extends React.Component {
                     })
                 }
 
-                </div>
+                </PostContainerWrapper>
         )
     }
 

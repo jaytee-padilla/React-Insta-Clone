@@ -1,6 +1,38 @@
 import React from 'react';
-import './CommentSection.scss';
+import styled from 'styled-components';
+import {Username} from '../../Styles/Reusables';
 import uuid from 'uuid';
+
+const CommentSectionWrapper = styled.div`
+    padding: 0 25px;
+`;
+
+const CommentWrapper = styled.div`
+    display: flex;
+    padding: 5px 0;
+`;
+
+const CommentText = styled.p`
+    font-size: 14px;
+    padding-left: 5px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+`;
+
+const TimeStamp = styled.p`
+    font-size: 12px;
+    color: darkgrey;
+    margin-top: 5px;
+    margin-bottom: 15px;
+`;
+
+const AddCommentInput = styled.input`
+    width: 100%;
+    padding: 15px 0;
+    font-size: 14px;
+    border: 0;
+    border-top: 1px solid lightgrey;
+`;
 
 class CommentSection extends React.Component {
     state = {
@@ -12,7 +44,7 @@ class CommentSection extends React.Component {
         event.preventDefault();
         
         const newComment = {
-            username: 'Jaytee',
+            username: 'jaytee',
             text: this.state.newComment
         }
 
@@ -27,26 +59,27 @@ class CommentSection extends React.Component {
 
     render() {
         return (
-            <div className="commentSectionContainer">
+            <CommentSectionWrapper>
                     {this.state.comments.map((comment, index) => {
                         return (
-                            <React.Fragment>
-                                <h3>{comment.username}</h3>
-                                <p>{comment.text}</p>
-                            </React.Fragment>
+                            <CommentWrapper>
+                                <Username>{comment.username}</Username>
+                                <CommentText>{comment.text}</CommentText>
+                            </CommentWrapper>
                         )
                     })}
 
-                    <p className="time-stamp">{this.props.timestamp}</p>
+                    <TimeStamp>{this.props.timestamp}</TimeStamp>
+
                     <form onSubmit={this.addNewComment}>
-                        <input 
+                        <AddCommentInput
                             type="text" name="newComment"
                             value={this.state.newComment}
                             onChange={this.changeHandler}
-                            placeholder="add a comment..."
+                            placeholder="Add a comment..."
                         />
                     </form>
-            </div>
+            </CommentSectionWrapper>
         )
     }
 }

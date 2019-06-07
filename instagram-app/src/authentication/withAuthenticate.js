@@ -1,6 +1,6 @@
 import React from 'react';
 
-const withAuthenticate = PostPage => Login =>
+const withAuthenticate = PostsPage => Login =>
 class extends React.Component {
     state = {
         isLoggedIn: false
@@ -13,7 +13,7 @@ class extends React.Component {
     render() {
         return (
             <div>
-                {this.state.isLoggedIn ? <PostPage /> : <Login />}
+                {this.state.isLoggedIn ? <PostsPage /> : <Login />}
             </div>
         )
     }
